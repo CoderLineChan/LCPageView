@@ -2,10 +2,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "LCPageView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "LCPageView"
 
-  s.homepage     = "http://EXAMPLE/LCPageView"
+  s.homepage     = "https://github.com/CoderLineChan/LCPageView"
 
   s.license      = "MIT"
 
