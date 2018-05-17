@@ -22,10 +22,9 @@
 
 #import "TestViewController2.h"
 #import "LCPageView.h"
-#import "TestViewController1.h"
 #import "TestViewController3.h"
 #import "TestTitleView.h"
-#import <MJRefresh/MJRefresh.h>
+//#import <MJRefresh/MJRefresh.h>
 
 
 @interface TestViewController2 ()
@@ -83,11 +82,11 @@
     /// 是否开启整体bounces/刷新
     self.pageView.mainScrollView.bounces = self.isOverall;
     if (self.isOverall) {
-        __weak typeof(self) weakSelf = self;
-        self.pageView.mainScrollView.mj_header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
-            NSLog(@"开启刷新");
-            [weakSelf endRefresh];
-        }];
+//        __weak typeof(self) weakSelf = self;
+//        self.pageView.mainScrollView.mj_header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+//            NSLog(@"开启刷新");
+//            [weakSelf endRefresh];
+//        }];
     }
     [self.view addSubview:self.pageView];
 }
@@ -96,7 +95,7 @@
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSLog(@"结束刷新");
-        [self.pageView.mainScrollView.mj_header endRefreshing];
+//        [self.pageView.mainScrollView.mj_header endRefreshing];
     });
 }
 

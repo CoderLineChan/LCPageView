@@ -7,7 +7,7 @@
 //
 
 #import "TestViewController3.h"
-#import <MJRefresh/MJRefresh.h>
+//#import <MJRefresh/MJRefresh.h>
 #import "UIViewController+Category.h"
 #import "TestViewController2.h"
 
@@ -27,17 +27,17 @@
     self.view.backgroundColor = [UIColor greenColor];
     [self.view addSubview:self.tableView];
     [self.tableView reloadData];
-    __weak typeof(self) weakSelf = self;
-    self.tableView.mj_header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
-        [weakSelf endRefresh];
-    }];
+//    __weak typeof(self) weakSelf = self;
+//    self.tableView.mj_header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+//        [weakSelf endRefresh];
+//    }];
 }
 
 - (void)endRefresh
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSLog(@"结束刷新");
-        [self.tableView.mj_header endRefreshing];
+//        [self.tableView.mj_header endRefreshing];
     });
 }
 

@@ -146,6 +146,8 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     for (UIViewController *vc in self.childControllers) {
         [self.parentController addChildViewController:vc];
         __weak typeof(self) weakSelf = self;
+        /// 确保vc的viewDidload方法执行后 lcScrollView 才有值
+        if (vc.view) {}
         vc.lcScrollView.scrollHandle = ^(UIScrollView *scrollView) {
             weakSelf.outsideScrollView = scrollView;
             if (weakSelf.mainScrollView.contentOffset.y == 0) {

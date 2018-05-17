@@ -8,10 +8,8 @@
 
 #import "ViewController.h"
 #import "LCPageView.h"
-#import "TestViewController1.h"
 #import "TestViewController2.h"
 
-#import <objc/runtime.h>
 
 @interface ViewController ()
 
@@ -27,12 +25,6 @@
     [super viewDidLoad];
     [self setupExample];
     NSLog(@"完成");
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    TestViewController2 *vc = [[TestViewController2 alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setupExample
