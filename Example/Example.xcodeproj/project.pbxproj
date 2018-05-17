@@ -13,6 +13,12 @@
 		C857065820ADAF9F00397593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C857065720ADAF9F00397593 /* Assets.xcassets */; };
 		C857065B20ADAF9F00397593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C857065920ADAF9F00397593 /* LaunchScreen.storyboard */; };
 		C857065E20ADAF9F00397593 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C857065D20ADAF9F00397593 /* main.m */; };
+		C857068520ADB08A00397593 /* LCTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C857067820ADB08900397593 /* LCTitleView.m */; };
+		C857068620ADB08A00397593 /* LCPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C857067920ADB08900397593 /* LCPageView.m */; };
+		C857068720ADB08A00397593 /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C857067A20ADB08900397593 /* UIViewController+Category.m */; };
+		C857068820ADB08A00397593 /* LCPageViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C857067B20ADB08900397593 /* LCPageViewStyle.m */; };
+		C857068920ADB08A00397593 /* MainScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C857067D20ADB08A00397593 /* MainScrollView.m */; };
+		C857068A20ADB08A00397593 /* UIScrollView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C857068120ADB08A00397593 /* UIScrollView+Category.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,19 @@
 		C857065A20ADAF9F00397593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C857065C20ADAF9F00397593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C857065D20ADAF9F00397593 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C857067820ADB08900397593 /* LCTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCTitleView.m; sourceTree = "<group>"; };
+		C857067920ADB08900397593 /* LCPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCPageView.m; sourceTree = "<group>"; };
+		C857067A20ADB08900397593 /* UIViewController+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Category.m"; sourceTree = "<group>"; };
+		C857067B20ADB08900397593 /* LCPageViewStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCPageViewStyle.m; sourceTree = "<group>"; };
+		C857067C20ADB08900397593 /* LCTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCTitleView.h; sourceTree = "<group>"; };
+		C857067D20ADB08A00397593 /* MainScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScrollView.m; sourceTree = "<group>"; };
+		C857067E20ADB08A00397593 /* LCPageContentViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPageContentViewProtocol.h; sourceTree = "<group>"; };
+		C857067F20ADB08A00397593 /* LCPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPageView.h; sourceTree = "<group>"; };
+		C857068020ADB08A00397593 /* UIScrollView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Category.h"; sourceTree = "<group>"; };
+		C857068120ADB08A00397593 /* UIScrollView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Category.m"; sourceTree = "<group>"; };
+		C857068220ADB08A00397593 /* UIViewController+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Category.h"; sourceTree = "<group>"; };
+		C857068320ADB08A00397593 /* LCPageViewStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPageViewStyle.h; sourceTree = "<group>"; };
+		C857068420ADB08A00397593 /* MainScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScrollView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +77,7 @@
 		C857064D20ADAF9E00397593 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				C857066420ADB04500397593 /* Source */,
 				C857064E20ADAF9E00397593 /* AppDelegate.h */,
 				C857064F20ADAF9E00397593 /* AppDelegate.m */,
 				C857065120ADAF9E00397593 /* ViewController.h */,
@@ -69,6 +89,27 @@
 				C857065D20ADAF9F00397593 /* main.m */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		C857066420ADB04500397593 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C857067E20ADB08A00397593 /* LCPageContentViewProtocol.h */,
+				C857067F20ADB08A00397593 /* LCPageView.h */,
+				C857067920ADB08900397593 /* LCPageView.m */,
+				C857068320ADB08A00397593 /* LCPageViewStyle.h */,
+				C857067B20ADB08900397593 /* LCPageViewStyle.m */,
+				C857067C20ADB08900397593 /* LCTitleView.h */,
+				C857067820ADB08900397593 /* LCTitleView.m */,
+				C857068420ADB08A00397593 /* MainScrollView.h */,
+				C857067D20ADB08A00397593 /* MainScrollView.m */,
+				C857068020ADB08A00397593 /* UIScrollView+Category.h */,
+				C857068120ADB08A00397593 /* UIScrollView+Category.m */,
+				C857068220ADB08A00397593 /* UIViewController+Category.h */,
+				C857067A20ADB08900397593 /* UIViewController+Category.m */,
+			);
+			name = Source;
+			path = ../../Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +182,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C857068520ADB08A00397593 /* LCTitleView.m in Sources */,
+				C857068A20ADB08A00397593 /* UIScrollView+Category.m in Sources */,
 				C857065320ADAF9E00397593 /* ViewController.m in Sources */,
+				C857068920ADB08A00397593 /* MainScrollView.m in Sources */,
 				C857065E20ADAF9F00397593 /* main.m in Sources */,
+				C857068820ADB08A00397593 /* LCPageViewStyle.m in Sources */,
+				C857068620ADB08A00397593 /* LCPageView.m in Sources */,
+				C857068720ADB08A00397593 /* UIViewController+Category.m in Sources */,
 				C857065020ADAF9E00397593 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
