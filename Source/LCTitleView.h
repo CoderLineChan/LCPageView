@@ -29,7 +29,6 @@
  */
 - (void)initSuperTitleView;
 #pragma mark - 子控制器调用方法
-
 /**
  滚动内容视图
 
@@ -37,20 +36,27 @@
  */
 - (void)scrollCollectionviewWithIndex:(NSInteger)index;
 
-#pragma mark - 内容视图滚动的代理方法
+#pragma mark - 内容视图滚动的代理方法(子类重写)
+
+/**
+ 正在滚动
+
+ @param collectionView 内容滚动视图
+ */
+- (void)collectionViewDidScroll:(UICollectionView *)collectionView;
+
 /// 即将开始拖拽
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)collectionViewWillBeginDragging:(UICollectionView *)collectionView;
 
 /// 已经停止拖拽
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)collectionViewDidEndDragging:(UICollectionView *)collectionView willDecelerate:(BOOL)decelerate;
 
 /// 已经结束拖拽
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)collectionViewDidEndDecelerating:(UICollectionView *)collectionView;
 
 /// 已经滚动结束
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)collectionViewDidEndScrollingAnimation:(UICollectionView *)collectionView;
 
-/// 正在滚动
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+
 
 @end

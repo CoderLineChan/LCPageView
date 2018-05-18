@@ -159,51 +159,57 @@
 }
 #pragma mark - 代理方法
 /// 即将开始拖拽
-- (void)lc_scrollViewWillBeginDragging:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size
+- (void)lc_scrollViewWillBeginDragging:(UICollectionView *)collectionView
 {
-    [self scrollViewWillBeginDragging:scrollView contentViewOffset:offset contentViewSize:size];
+    [self collectionViewWillBeginDragging:collectionView];
 }
 
 /// 已经停止拖拽
-- (void)lc_scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size
+- (void)lc_scrollViewDidEndDragging:(UICollectionView *)collectionView willDecelerate:(BOOL)decelerate
 {
-    [self scrollViewDidEndDragging:scrollView willDecelerate:decelerate contentViewOffset:offset contentViewSize:size];
+    [self collectionViewDidEndDragging:collectionView willDecelerate:decelerate];
 }
 
 /// 已经结束拖拽
-- (void)lc_scrollViewDidEndDecelerating:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size
+- (void)lc_scrollViewDidEndDecelerating:(UICollectionView *)collectionView
 {
-    [self scrollViewDidEndDecelerating:scrollView contentViewOffset:offset contentViewSize:size];
-    NSInteger index = (NSInteger)(offset.x / size.width);
+    [self collectionViewDidEndDecelerating:collectionView];
+    NSInteger index = (NSInteger)(collectionView.contentOffset.x / collectionView.bounds.size.width);
     [self changeLabelColor:index];
 }
 
 /// 已经滚动结束
-- (void)lc_scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size
+- (void)lc_scrollViewDidEndScrollingAnimation:(UICollectionView *)collectionView
 {
-    [self scrollViewDidEndScrollingAnimation:scrollView contentViewOffset:offset contentViewSize:size];
+    [self collectionViewDidEndScrollingAnimation:collectionView];
 }
 
 /// 正在滚动
-- (void)lc_scrollViewDidScroll:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size
+- (void)lc_scrollViewDidScroll:(UICollectionView *)collectionView
 {
-    [self scrollViewDidScroll:scrollView contentViewOffset:offset contentViewSize:size];
+    [self collectionViewDidScroll:collectionView];
 }
 #pragma mark - 子类重写的方法
+/**
+ 正在滚动
+ 
+ @param collectionView 内容滚动视图
+ */
+- (void)collectionViewDidScroll:(UICollectionView *)collectionView {}
+
 /// 即将开始拖拽
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size {}
+- (void)collectionViewWillBeginDragging:(UICollectionView *)collectionView {}
 
 /// 已经停止拖拽
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size {}
+- (void)collectionViewDidEndDragging:(UICollectionView *)collectionView willDecelerate:(BOOL)decelerate {}
 
 /// 已经结束拖拽
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size {}
+- (void)collectionViewDidEndDecelerating:(UICollectionView *)collectionView {}
 
 /// 已经滚动结束
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size {}
+- (void)collectionViewDidEndScrollingAnimation:(UICollectionView *)collectionView {}
 
-/// 正在滚动
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size {}
+
 #pragma mark - getter setter
 - (UIScrollView *)titleScrollView
 {
