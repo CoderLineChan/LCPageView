@@ -5,9 +5,6 @@
 //  Created by 复新会智 on 2018/5/9.
 //  Copyright © 2018年 复新会智. All rights reserved.
 //
-/// 标题的高度
-#define kPageViewTitleHeight 38
-
 
 //屏幕尺寸
 #define kScreenBounds [UIScreen mainScreen].bounds

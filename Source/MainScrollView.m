@@ -20,8 +20,5 @@
     return ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] &&
             [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]);
 }
-- (void)dealloc
-{
-//    NSLog(@"MainScrollView销毁");
-}
+
 @end

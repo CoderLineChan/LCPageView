@@ -52,10 +52,6 @@
     UIView *superV = [self getLCPageViewWithCurrentView:self];
     if ([superV isKindOfClass:[LCPageView class]]) {
         [superV performSelector:@selector(setContentViewDelegate:) withObject:self];
-//        LCPageView *v = (LCPageView *)superV;
-//        id<LCPageContentViewProtocol> delegate = [v valueForKey:@"contentScrollDelegate"];
-//        delegate = self;
-//        v.contentScrollDelegate = self;
     }
 }
 

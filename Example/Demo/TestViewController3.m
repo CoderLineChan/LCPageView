@@ -68,6 +68,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TestViewController2 *vc = [[TestViewController2 alloc] init];
+    vc.title = @"示例2:内部刷新";
     [self.navigationController pushViewController:vc animated:YES];
     
 }
