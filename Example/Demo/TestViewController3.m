@@ -8,8 +8,9 @@
 
 #import "TestViewController3.h"
 //#import <MJRefresh/MJRefresh.h>
-#import "UIViewController+Category.h"
+//#import "UIViewController+Category.h"
 #import "TestViewController2.h"
+#import "LCPageView.h"
 
 @interface TestViewController3 ()<UITableViewDelegate, UITableViewDataSource>
 
