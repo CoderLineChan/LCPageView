@@ -1,5 +1,6 @@
 # LCPageView
 ScrollView嵌套Collectionview无痕衔接四向滚动， 支持自定义TitleView
+https://upload-images.jianshu.io/upload_images/3118958-c9668d69d65ed741.gif
 
 # How to use 
 见简书：
