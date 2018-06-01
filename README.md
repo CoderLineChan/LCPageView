@@ -11,7 +11,6 @@ To integrate LCPageView into your Xcode project using CocoaPods, specify it in y
 在你项目中的podfile文件里面添加 LCPageView
 ```
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '10.0'
 target '<Your Target Name>' do
     pod 'LCPageView'
 end
