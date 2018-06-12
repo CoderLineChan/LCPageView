@@ -19,7 +19,6 @@
 
 @implementation LCHeadView
 
-
 - (void)didMoveToSuperview
 {
     [super didMoveToSuperview];

@@ -11,6 +11,7 @@
 #import "MainScrollView.h"
 #import "LCTitleView.h"
 #import "LCHeadView.h"
+#import "UIViewController+Category.h"
 
 @interface LCPageView : UIView
 

@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupExample];
-    NSLog(@"完成");
+    NSLog(@"初始化完成");
 }
 
 - (void)setupExample
@@ -51,9 +51,11 @@
 {
     if (btn.tag == 1) {
         TestViewController2 *vc = [[TestViewController2 alloc] initWithOverallRefresh:YES];
+        vc.title = @"示例1:整体刷新";
         [self.navigationController pushViewController:vc animated:YES];
     }else if (btn.tag == 2) {
         TestViewController2 *vc = [[TestViewController2 alloc] init];
+        vc.title = @"示例2:内部刷新";
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

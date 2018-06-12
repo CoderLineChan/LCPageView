@@ -5,9 +5,6 @@
 //  Created by 复新会智 on 2018/5/9.
 //  Copyright © 2018年 复新会智. All rights reserved.
 //
-/// 标题的高度
-#define kPageViewTitleHeight 38
-
 
 //屏幕尺寸
 #define kScreenBounds [UIScreen mainScreen].bounds
@@ -146,7 +143,7 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     for (UIViewController *vc in self.childControllers) {
         [self.parentController addChildViewController:vc];
         __weak typeof(self) weakSelf = self;
-        /// 确保vc的viewDidload方法执行后 lcScrollView 才有值
+        /// 确保vc的viewDidload方法执行以后, lcScrollView 才会有值
         if (vc.view) {}
         vc.lcScrollView.scrollHandle = ^(UIScrollView *scrollView) {
             weakSelf.outsideScrollView = scrollView;
@@ -167,6 +164,8 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     }
     [self.mainScrollView insertSubview:self.contentCollectionView belowSubview:self.titleBottomView];
 }
+
+
 
 #pragma mark - 事件逻辑
 - (void)scrollCollectionviewWithIndex:(NSInteger)index
@@ -211,7 +210,7 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     NSInteger index = (NSInteger)(self.contentCollectionView.contentOffset.x / self.contentCollectionView.bounds.size.width);
     [self scrollCollectionviewWithIndex:index];
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndDecelerating:scrollView contentViewOffset:self.contentCollectionView.contentOffset contentViewSize:self.contentCollectionView.bounds.size] : nil;
+        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndDecelerating:(UICollectionView *)scrollView] : nil;
     }
 }
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
@@ -220,24 +219,23 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     [self scrollCollectionviewWithIndex:index];
     
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndScrollingAnimation:scrollView contentViewOffset:self.contentCollectionView.contentOffset contentViewSize:self.contentCollectionView.bounds.size] : nil;
+        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndScrollingAnimation:(UICollectionView *)scrollView] : nil;
     }
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndDragging:scrollView willDecelerate:decelerate contentViewOffset:self.contentCollectionView.contentOffset contentViewSize:self.contentCollectionView.bounds.size] : nil;
+        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndDragging:(UICollectionView *)scrollView willDecelerate:decelerate] : nil;
     }
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewWillBeginDragging:scrollView contentViewOffset:self.contentCollectionView.contentOffset contentViewSize:self.contentCollectionView.bounds.size] : nil;
+        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewWillBeginDragging:(UICollectionView *)scrollView] : nil;
     }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-//    NSLog(@"outsideScrollViewY:%f, scrollViewY:%f, headViewHeight:%f",self.outsideScrollView.contentOffset.y,scrollView.contentOffset.y,  self.headViewHeight);
     if (self.outsideScrollView.contentOffset.y > 0 ||
         scrollView.contentOffset.y > self.headViewHeight) {
         self.mainScrollView.contentOffset = CGPointMake(0, self.headViewHeight);
@@ -250,7 +248,7 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
         self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidScroll:scrollView contentViewOffset:self.contentCollectionView.contentOffset contentViewSize:self.contentCollectionView.bounds.size] : nil;
     }else if ([scrollView isKindOfClass:[self.mainScrollView class]]) {
-//        NSLog(@"offset:%f", scrollView.contentOffset.y);
+        
     }
     
 }
@@ -263,6 +261,7 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
         _mainScrollView.delegate = self;
         _mainScrollView.scrollsToTop = NO;
         _mainScrollView.showsVerticalScrollIndicator = NO;
+        _mainScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         [self addSubview:_mainScrollView];
     }
     return _mainScrollView;
@@ -302,7 +301,8 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
         _contentCollectionView.pagingEnabled = YES;
         _contentCollectionView.bounces = NO;
         _contentCollectionView.showsHorizontalScrollIndicator = NO;
-        _contentCollectionView.backgroundColor = [UIColor orangeColor];
+        _contentCollectionView.backgroundColor = [UIColor whiteColor];
+        _contentCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     return _contentCollectionView;
 }

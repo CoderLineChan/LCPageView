@@ -10,20 +10,21 @@
 
 @protocol LCPageContentViewProtocol <NSObject>
 
+#pragma mark - titleView 代理方法
 /// 即将开始拖拽
-- (void)lc_scrollViewWillBeginDragging:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)lc_scrollViewWillBeginDragging:(UICollectionView *)collectionView;
 
 /// 已经停止拖拽
-- (void)lc_scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)lc_scrollViewDidEndDragging:(UICollectionView *)collectionView willDecelerate:(BOOL)decelerate;
 
 /// 已经结束拖拽
-- (void)lc_scrollViewDidEndDecelerating:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)lc_scrollViewDidEndDecelerating:(UICollectionView *)collectionView;
 
 /// 已经滚动结束
-- (void)lc_scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)lc_scrollViewDidEndScrollingAnimation:(UICollectionView *)collectionView;
 
 /// 正在滚动
-- (void)lc_scrollViewDidScroll:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size;
+- (void)lc_scrollViewDidScroll:(UICollectionView *)collectionView;
 
 
 @end

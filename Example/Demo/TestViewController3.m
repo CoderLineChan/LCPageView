@@ -8,8 +8,9 @@
 
 #import "TestViewController3.h"
 //#import <MJRefresh/MJRefresh.h>
-#import "UIViewController+Category.h"
+//#import "UIViewController+Category.h"
 #import "TestViewController2.h"
+#import "LCPageView.h"
 
 @interface TestViewController3 ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -68,6 +69,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TestViewController2 *vc = [[TestViewController2 alloc] init];
+    vc.title = @"示例2:内部刷新";
     [self.navigationController pushViewController:vc animated:YES];
     
 }
