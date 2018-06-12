@@ -63,7 +63,7 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
 @property(nonatomic, assign) CGFloat startOffsetX;
 
 /** 头部视图 */
-@property(nonatomic, strong) UIView *headView;
+@property(nonatomic, strong) LCHeadView *headView;
 /** 头部视图的高度 */
 @property(nonatomic, assign)CGFloat headViewHeight;
 
@@ -76,11 +76,11 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     for (UIViewController *vc in self.childControllers) {
         vc.lcScrollView.delegate = nil;
     }
-//    NSLog(@"LCPageView销毁");
+    NSLog(@"LCPageView - dealloc");
 }
 #pragma mark - 初始化操作
 - (instancetype)initWithFrame:(CGRect)frame
-                     headView:(UIView *)headView
+                     headView:(LCHeadView *)headView
              childControllers:(NSArray <UIViewController *>*)childControllers
              parentController:(UIViewController *)parentController
               customTitleView:(LCTitleView *)customTitleView
@@ -249,6 +249,8 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     }
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
         self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidScroll:scrollView contentViewOffset:self.contentCollectionView.contentOffset contentViewSize:self.contentCollectionView.bounds.size] : nil;
+    }else if ([scrollView isKindOfClass:[self.mainScrollView class]]) {
+//        NSLog(@"offset:%f", scrollView.contentOffset.y);
     }
     
 }

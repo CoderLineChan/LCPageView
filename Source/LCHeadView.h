@@ -10,4 +10,8 @@
 
 @interface LCHeadView : UIView
 
+
+/// 正在滚动
+- (void)headViewDidScroll:(CGPoint)offset;
+
 @end

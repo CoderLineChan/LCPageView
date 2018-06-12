@@ -10,6 +10,7 @@
 #import "LCPageViewStyle.h"
 #import "MainScrollView.h"
 #import "LCTitleView.h"
+#import "LCHeadView.h"
 
 @interface LCPageView : UIView
 
@@ -26,15 +27,15 @@
                例如:  self.lcScrollView = self.tableView;
 
  @param frame frame
- @param headView 头部视图
+ @param headView 自定义头部视图(继承拥有上下滚动代理)
  @param childControllers 内容控制器
  @param parentController 当前控制器
- @param customTitleView 自定义标题的View
+ @param customTitleView 自定义标题的View(继承拥有左右滚动代理)
  @param pageViewStyle pageView的样式(有默认的样式)
  @return pageView
  */
 - (instancetype)initWithFrame:(CGRect)frame
-                     headView:(UIView *)headView
+                     headView:(LCHeadView *)headView
              childControllers:(NSArray <UIViewController *>*)childControllers
              parentController:(UIViewController *)parentController
               customTitleView:(LCTitleView *)customTitleView

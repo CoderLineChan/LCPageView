@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C809C75520CD85C9004CE1F1 /* LCHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C809C75420CD85C9004CE1F1 /* LCHeadView.m */; };
 		C857065020ADAF9E00397593 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C857064F20ADAF9E00397593 /* AppDelegate.m */; };
 		C857065620ADAF9E00397593 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C857065420ADAF9E00397593 /* Main.storyboard */; };
 		C857065820ADAF9F00397593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C857065720ADAF9F00397593 /* Assets.xcassets */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C809C75320CD85C9004CE1F1 /* LCHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHeadView.h; sourceTree = "<group>"; };
+		C809C75420CD85C9004CE1F1 /* LCHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCHeadView.m; sourceTree = "<group>"; };
 		C857064B20ADAF9E00397593 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C857064E20ADAF9E00397593 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C857064F20ADAF9E00397593 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -102,19 +105,21 @@
 		C857066420ADB04500397593 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C857067E20ADB08A00397593 /* LCPageContentViewProtocol.h */,
 				C857067F20ADB08A00397593 /* LCPageView.h */,
 				C857067920ADB08900397593 /* LCPageView.m */,
 				C857068320ADB08A00397593 /* LCPageViewStyle.h */,
 				C857067B20ADB08900397593 /* LCPageViewStyle.m */,
 				C857067C20ADB08900397593 /* LCTitleView.h */,
 				C857067820ADB08900397593 /* LCTitleView.m */,
+				C809C75320CD85C9004CE1F1 /* LCHeadView.h */,
+				C809C75420CD85C9004CE1F1 /* LCHeadView.m */,
 				C857068420ADB08A00397593 /* MainScrollView.h */,
 				C857067D20ADB08A00397593 /* MainScrollView.m */,
 				C857068020ADB08A00397593 /* UIScrollView+Category.h */,
 				C857068120ADB08A00397593 /* UIScrollView+Category.m */,
 				C857068220ADB08A00397593 /* UIViewController+Category.h */,
 				C857067A20ADB08900397593 /* UIViewController+Category.m */,
+				C857067E20ADB08A00397593 /* LCPageContentViewProtocol.h */,
 			);
 			name = Source;
 			path = ../../Source;
@@ -207,6 +212,7 @@
 			files = (
 				C857069A20ADB22400397593 /* TestTitleView.m in Sources */,
 				C857068520ADB08A00397593 /* LCTitleView.m in Sources */,
+				C809C75520CD85C9004CE1F1 /* LCHeadView.m in Sources */,
 				C857069920ADB22400397593 /* TestViewController2.m in Sources */,
 				C857068A20ADB08A00397593 /* UIScrollView+Category.m in Sources */,
 				C857068920ADB08A00397593 /* MainScrollView.m in Sources */,

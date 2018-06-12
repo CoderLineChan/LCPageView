@@ -44,7 +44,7 @@
 }
 - (void)dealloc
 {
-//    NSLog(@"LCTitleView释放");
+    NSLog(@"LCTitleView - dealloc");
 }
 - (void)didMoveToSuperview
 {
@@ -52,10 +52,6 @@
     UIView *superV = [self getLCPageViewWithCurrentView:self];
     if ([superV isKindOfClass:[LCPageView class]]) {
         [superV performSelector:@selector(setContentViewDelegate:) withObject:self];
-//        LCPageView *v = (LCPageView *)superV;
-//        id<LCPageContentViewProtocol> delegate = [v valueForKey:@"contentScrollDelegate"];
-//        delegate = self;
-//        v.contentScrollDelegate = self;
     }
 }
 
@@ -187,6 +183,7 @@
 /// 正在滚动
 - (void)lc_scrollViewDidScroll:(UIScrollView *)scrollView contentViewOffset:(CGPoint)offset contentViewSize:(CGSize)size
 {
+    NSLog(@"titleView:%f", scrollView.contentOffset.y);
     [self scrollViewDidScroll:scrollView contentViewOffset:offset contentViewSize:size];
 }
 #pragma mark - 子类重写的方法

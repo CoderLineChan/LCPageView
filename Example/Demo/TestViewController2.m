@@ -65,7 +65,7 @@
         vc.title = title;
         [array addObject:vc];
     }
-    UIView *headView = [[UIView alloc] init];
+    LCHeadView *headView = [[LCHeadView alloc] init];
     headView.backgroundColor = [UIColor redColor];
     headView.frame = CGRectMake(0, 0, kScreenW, 150);
     
