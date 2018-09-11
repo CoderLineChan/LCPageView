@@ -22,3 +22,4 @@ Then, run the following command:
 ```
 pod install
 ```
+## 第二种直接拖入工程
