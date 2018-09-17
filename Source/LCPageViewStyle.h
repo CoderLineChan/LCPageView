@@ -3,25 +3,28 @@
 //  LCPageView
 //
 //  Created by 陈连辰 on 2018/5/9.
-//  Copyright © 2018年 复新会智. All rights reserved.
+//  Copyright © 2018年 lianchen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "LCPageViewProtocol.h"
 
-@interface LCPageViewStyle : NSObject
+@interface LCPageViewStyle : NSObject<LCPageViewStyleProtocol>
+/**
+ 普通模式:没有任何特效
+ 背景平均填满整个TitleView
+ 只有字体与背景各两种颜色
+ */
+- (void)initNormalStyle;
 
-/** title标题高度 */
-@property(nonatomic, assign)CGFloat titleViewHeight;
-/** titleLabel的字体大小 */
-@property(nonatomic, assign)CGFloat titleLabelFont;
-/** titleLabel正常颜色 */
-@property(nonatomic, strong)UIColor *titleLabelNormalColor;
-/** titleLabel选中颜色 */
-@property(nonatomic, strong)UIColor *titleLabelSelectColor;
-/** titleLabel正常背景颜色 */
-@property(nonatomic, strong)UIColor *titleLabelNormalBgColor;
-/** titleLabel选中背景颜色 */
-@property(nonatomic, strong)UIColor *titleLabelSelectBgColor;
+/**
+ 默认模式
+ */
+- (void)initDefaulStyle;
 
+/**
+ 渐变模式
+ */
+- (void)initGradientStyle;
 
 @end

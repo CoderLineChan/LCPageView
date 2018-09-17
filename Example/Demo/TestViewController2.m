@@ -2,8 +2,8 @@
 //  TestViewController2.m
 //  LCPageView
 //
-//  Created by 复新会智 on 2018/5/14.
-//  Copyright © 2018年 复新会智. All rights reserved.
+//  Created by lianchen on 2018/5/14.
+//  Copyright © 2018年 lianchen. All rights reserved.
 //
 
 
@@ -58,23 +58,25 @@
 }
 - (void)testPageView
 {
-    NSArray *titles = @[@"测试&测试1", @"测试&测试2", @"主页", @"我的"];
+    NSArray *titles = @[@"测试&测试1", @"测试&测试2", @"主页", @"我的", @"测试&测试3", @"测试&测试4"];
     NSMutableArray *array = [NSMutableArray array];
     for (NSString *title in titles) {
         TestViewController3 *vc = [[TestViewController3 alloc] init];
         vc.title = title;
         [array addObject:vc];
     }
-    UIView *headView = [[UIView alloc] init];
+    LCHeadView *headView = [[LCHeadView alloc] init];
     headView.backgroundColor = [UIColor redColor];
     headView.frame = CGRectMake(0, 0, kScreenW, 150);
     
     LCPageViewStyle *style = [[LCPageViewStyle alloc] init];
+//    [style initNormalStyle];
+    [style initDefaulStyle];
+//    [style initGradientStyle];
     
     CGRect frame = CGRectMake(0, kNavH, kScreenW, kScreenH - kNavH);
     /// 自定义标题
-    TestTitleView *titleView = [[TestTitleView alloc] initWithFrame:CGRectMake(0,0, kScreenW, 38) titles:titles pageViewStyle:style];
-    [titleView initSuperTitleView];
+    TestTitleView *titleView = [[TestTitleView alloc] initWithFrame:CGRectMake(0,0, kScreenW, style.titleViewHeight) titles:titles pageViewStyle:style];
     
     /// 主pageView
     self.pageView = [[LCPageView alloc] initWithFrame:frame headView:headView childControllers:array parentController:self customTitleView:titleView pageViewStyle:style];

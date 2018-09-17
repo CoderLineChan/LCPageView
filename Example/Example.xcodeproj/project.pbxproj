@@ -23,6 +23,8 @@
 		C857069720ADB22400397593 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C857068F20ADB22400397593 /* ViewController.m */; };
 		C857069920ADB22400397593 /* TestViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = C857069120ADB22400397593 /* TestViewController2.m */; };
 		C857069A20ADB22400397593 /* TestTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C857069220ADB22400397593 /* TestTitleView.m */; };
+		C858BF76214E2623003B585D /* UIView+LCFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C858BF74214E2623003B585D /* UIView+LCFrame.m */; };
+		C858BF7A214E668A003B585D /* TextStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C858BF79214E668A003B585D /* TextStyle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +32,6 @@
 		9DA53F1620AE69FE00DA0D0E /* LCHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCHeadView.m; sourceTree = "<group>"; };
 		9DA53F1820AE6A9000DA0D0E /* LCTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCTitleView.m; sourceTree = "<group>"; };
 		9DA53F1920AE6A9000DA0D0E /* LCTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCTitleView.h; sourceTree = "<group>"; };
-		9DA53F1B20AE6AAE00DA0D0E /* LCPageContentViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPageContentViewProtocol.h; sourceTree = "<group>"; };
 		9DA53F1C20AE6AC200DA0D0E /* LCPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCPageView.m; sourceTree = "<group>"; };
 		9DA53F1D20AE6AC200DA0D0E /* LCPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPageView.h; sourceTree = "<group>"; };
 		C857064B20ADAF9E00397593 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +58,11 @@
 		C857069320ADB22400397593 /* TestTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTitleView.h; sourceTree = "<group>"; };
 		C857069420ADB22400397593 /* TestViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController2.h; sourceTree = "<group>"; };
 		C857069520ADB22400397593 /* TestViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController3.h; sourceTree = "<group>"; };
+		C858BF74214E2623003B585D /* UIView+LCFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCFrame.m"; sourceTree = "<group>"; };
+		C858BF75214E2623003B585D /* UIView+LCFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LCFrame.h"; sourceTree = "<group>"; };
+		C858BF77214E6534003B585D /* LCPageViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCPageViewProtocol.h; sourceTree = "<group>"; };
+		C858BF78214E668A003B585D /* TextStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextStyle.h; sourceTree = "<group>"; };
+		C858BF79214E668A003B585D /* TextStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextStyle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,8 @@
 				C857066420ADB04500397593 /* Source */,
 				C857064E20ADAF9E00397593 /* AppDelegate.h */,
 				C857064F20ADAF9E00397593 /* AppDelegate.m */,
+				C858BF78214E668A003B585D /* TextStyle.h */,
+				C858BF79214E668A003B585D /* TextStyle.m */,
 				C857065420ADAF9E00397593 /* Main.storyboard */,
 				C857065720ADAF9F00397593 /* Assets.xcassets */,
 				C857065920ADAF9F00397593 /* LaunchScreen.storyboard */,
@@ -115,11 +123,13 @@
 				C857067B20ADB08900397593 /* LCPageViewStyle.m */,
 				C857068420ADB08A00397593 /* MainScrollView.h */,
 				C857067D20ADB08A00397593 /* MainScrollView.m */,
+				C858BF75214E2623003B585D /* UIView+LCFrame.h */,
+				C858BF74214E2623003B585D /* UIView+LCFrame.m */,
 				C857068020ADB08A00397593 /* UIScrollView+Category.h */,
 				C857068120ADB08A00397593 /* UIScrollView+Category.m */,
 				C857068220ADB08A00397593 /* UIViewController+Category.h */,
 				C857067A20ADB08900397593 /* UIViewController+Category.m */,
-				9DA53F1B20AE6AAE00DA0D0E /* LCPageContentViewProtocol.h */,
+				C858BF77214E6534003B585D /* LCPageViewProtocol.h */,
 			);
 			name = Source;
 			path = ../../Source;
@@ -214,7 +224,9 @@
 				9DA53F1720AE69FE00DA0D0E /* LCHeadView.m in Sources */,
 				C857069920ADB22400397593 /* TestViewController2.m in Sources */,
 				C857068A20ADB08A00397593 /* UIScrollView+Category.m in Sources */,
+				C858BF7A214E668A003B585D /* TextStyle.m in Sources */,
 				C857068920ADB08A00397593 /* MainScrollView.m in Sources */,
+				C858BF76214E2623003B585D /* UIView+LCFrame.m in Sources */,
 				9DA53F1A20AE6A9000DA0D0E /* LCTitleView.m in Sources */,
 				C857065E20ADAF9F00397593 /* main.m in Sources */,
 				C857069720ADB22400397593 /* ViewController.m in Sources */,

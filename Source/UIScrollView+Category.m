@@ -3,12 +3,11 @@
 //  LCPageView
 //
 //  Created by 陈连辰 on 2018/5/12.
-//  Copyright © 2018年 复新会智. All rights reserved.
+//  Copyright © 2018年 lianchen. All rights reserved.
 //
 
 #import "UIScrollView+Category.h"
 #import <objc/runtime.h>
-
 
 #define LCScrollHandleKey @"scrollHandle"
 
@@ -38,6 +37,7 @@
 {
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
+        #pragma clang diagnostic ignored "-Wundeclared-selector"
         SEL originSel = @selector(_notifyDidScroll);
         SEL newSel = @selector(scrollDidScroll);
         [self associationScrollWethodWithClass:[self class] originSel:originSel associationSel:newSel];

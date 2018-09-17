@@ -2,45 +2,28 @@
 //  LCPageView.m
 //  LCPageView
 //
-//  Created by 复新会智 on 2018/5/9.
-//  Copyright © 2018年 复新会智. All rights reserved.
+//  Created by lianchen on 2018/5/9.
+//  Copyright © 2018年 lianchen. All rights reserved.
 //
-
-//屏幕尺寸
-#define kScreenBounds [UIScreen mainScreen].bounds
-//屏幕高度
-#define kScreenH [UIScreen mainScreen].bounds.size.height
-//屏幕宽度
-#define kScreenW [UIScreen mainScreen].bounds.size.width
-
-
-
 
 #import "LCPageView.h"
 #import "UIScrollView+Category.h"
-#import "UIViewController+Category.h"
-#import "LCPageContentViewProtocol.h"
+#import "UIView+LCFrame.h"
 
 
 static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionViewCellID";
 
 @interface LCPageView ()<UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate>
-
-/** 内容滚动的代理 */
-@property(nonatomic, weak)id<LCPageContentViewProtocol> contentScrollDelegate;
-
 /** 子控制器数组 */
 @property(nonatomic, strong)NSArray <UIViewController *>*childControllers;
 /** 父控制器 */
 @property(nonatomic, weak)UIViewController *parentController;
 /** 样式 */
-@property(nonatomic, strong)LCPageViewStyle *style;
-
+@property(nonatomic, strong)id <LCPageViewStyleProtocol>style;
 /** 最底部滚动视图 */
 @property(nonatomic, strong)MainScrollView *mainScrollView;
-/** <#注释#> */
+/** 外面传进来的主滚动视图 */
 @property(nonatomic, strong)UIScrollView *outsideScrollView;
-
 /** 主标题视图 */
 @property(nonatomic, strong)LCTitleView *titleView;
 /** 主标题底部视图(存放主标题视图) */
@@ -53,20 +36,20 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
 @property(nonatomic, assign)NSInteger currentIndex;
 /** 标题内容的数组 */
 @property(nonatomic, strong)NSArray <UILabel *>*titleLableArray;
-
 /** 内容视图 */
-@property(nonatomic, strong) UICollectionView *contentCollectionView;
-/** 内容视图开始滚动位置 */
-@property(nonatomic, assign) CGFloat startOffsetX;
-
+@property(nonatomic, strong)UICollectionView *contentCollectionView;
 /** 头部视图 */
-@property(nonatomic, strong) UIView *headView;
+@property(nonatomic, strong)LCHeadView *headView;
 /** 头部视图的高度 */
 @property(nonatomic, assign)CGFloat headViewHeight;
 
 @end
 
 @implementation LCPageView
+{
+    /** 内容滚动的代理 */
+    NSPointerArray* _delegates;
+}
 
 - (void)dealloc
 {
@@ -74,17 +57,19 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
         vc.lcScrollView.delegate = nil;
     }
 //    NSLog(@"LCPageView销毁");
+    [self removeAllDelegates];
 }
 #pragma mark - 初始化操作
 - (instancetype)initWithFrame:(CGRect)frame
-                     headView:(UIView *)headView
+                     headView:(LCHeadView *)headView
              childControllers:(NSArray <UIViewController *>*)childControllers
              parentController:(UIViewController *)parentController
               customTitleView:(LCTitleView *)customTitleView
-                pageViewStyle:(LCPageViewStyle *)pageViewStyle
+                pageViewStyle:(id <LCPageViewStyleProtocol>)pageViewStyle
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _delegates = [NSPointerArray weakObjectsPointerArray];
         self.headView = headView;
         self.childControllers = childControllers;
         self.parentController = parentController;
@@ -124,9 +109,9 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
         self.titleView = [[LCTitleView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.style.titleViewHeight) titles:array pageViewStyle:self.style];
         [self.titleBottomView addSubview:self.titleView];
     }
-    if (self.titleView) {
-        [self.titleView initSuperTitleView];
-    }
+//    if (self.titleView) {
+//        [self.titleView initSuperTitleView];
+//    }
 }
 
 /// 初始化内容
@@ -179,10 +164,6 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
 {
     [self scrollCollectionviewWithIndex:[index integerValue]];
 }
-- (void)setContentViewDelegate:(id<LCPageContentViewProtocol>)delegate
-{
-    self.contentScrollDelegate = delegate;
-}
 #pragma mark - collectionview delegate datasource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -210,7 +191,7 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     NSInteger index = (NSInteger)(self.contentCollectionView.contentOffset.x / self.contentCollectionView.bounds.size.width);
     [self scrollCollectionviewWithIndex:index];
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndDecelerating:(UICollectionView *)scrollView] : nil;
+        [self performDelegateWithSel:@selector(lc_scrollViewDidEndDecelerating:) withObject:(UICollectionView *)scrollView];
     }
 }
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
@@ -219,19 +200,19 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
     [self scrollCollectionviewWithIndex:index];
     
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndScrollingAnimation:(UICollectionView *)scrollView] : nil;
+        [self performDelegateWithSel:@selector(lc_scrollViewDidEndScrollingAnimation:) withObject:(UICollectionView *)scrollView];
     }
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidEndDragging:(UICollectionView *)scrollView willDecelerate:decelerate] : nil;
+        SuppressPerformSelectorLeakWarning([self performDelegateWithSel:@selector(lc_scrollViewDidEndDragging:) withObject1:(UICollectionView *)scrollView withobject2:@(decelerate)]);
     }
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewWillBeginDragging:(UICollectionView *)scrollView] : nil;
+        [self performDelegateWithSel:@selector(lc_scrollViewWillBeginDragging:) withObject:scrollView];
     }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -246,7 +227,9 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
         }
     }
     if ([scrollView isKindOfClass:[self.contentCollectionView class]]) {
-        self.contentScrollDelegate ? [self.contentScrollDelegate lc_scrollViewDidScroll:(UICollectionView *)scrollView] : nil;
+        [self performDelegateWithSel:@selector(lc_scrollViewDidHorizontalScroll:) withObject:scrollView];
+    }else {
+        [self performDelegateWithSel:@selector(lc_scrollViewDidVerticalScroll:) withObject:scrollView];
     }
     
 }
@@ -260,6 +243,7 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
         _mainScrollView.scrollsToTop = NO;
         _mainScrollView.showsVerticalScrollIndicator = NO;
         _mainScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        _mainScrollView.backgroundColor = self.style.titleViewBgColor;
         [self addSubview:_mainScrollView];
     }
     return _mainScrollView;
@@ -268,8 +252,8 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
 {
     if (!_titleBottomView) {
         _titleBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.headView.bounds.size.height, self.bounds.size.width, self.style.titleViewHeight)];
-        _titleBottomView.backgroundColor = [UIColor clearColor];
         [self.mainScrollView addSubview:_titleBottomView];
+        _titleBottomView.backgroundColor = self.style.titleViewBgColor;
     }
     return _titleBottomView;
 }
@@ -303,6 +287,87 @@ static NSString *const kPageViewCollectionViewCellID = @"kPageViewCollectionView
         _contentCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     return _contentCollectionView;
+}
+
+
+#pragma mark - LCMultiDelegate
+- (void)addDelegate:(id<LCPageContentViewProtocol>)delegate {
+    [_delegates addPointer:(__bridge void*)delegate];
+}
+- (void)removeDelegate:(id<LCPageContentViewProtocol>)delegate {
+    NSUInteger index = [self indexOfDelegate:delegate];
+    if (index != NSNotFound)
+        [_delegates removePointerAtIndex:index];
+    [_delegates compact];
+}
+- (void)removeAllDelegates {
+    for (NSUInteger i = _delegates.count; i > 0; i -= 1)
+        [_delegates removePointerAtIndex:i - 1];
+}
+- (void)performDelegateWithSel:(SEL)sel withObject:(id)object
+{
+    for (NSUInteger i = 0; i < _delegates.count; i += 1) {
+        id delegate = [_delegates pointerAtIndex:i];
+        if ([delegate respondsToSelector:sel]) {
+            SuppressPerformSelectorLeakWarning1([delegate performSelector:sel withObject:object]);
+        }
+    }
+}
+- (void)performDelegateWithSel:(SEL)sel withObject1:(id)object1 withobject2:(id)onject2
+{
+    for (NSUInteger i = 0; i < _delegates.count; i += 1) {
+        id delegate = [_delegates pointerAtIndex:i];
+        if ([delegate respondsToSelector:sel]) {
+            SuppressPerformSelectorLeakWarning1([delegate performSelector:sel withObject:object1 withObject:onject2]);
+        }
+    }
+}
+- (NSUInteger)indexOfDelegate:(id)delegate {
+    for (NSUInteger i = 0; i < _delegates.count; i += 1) {
+        if ([_delegates pointerAtIndex:i] == (__bridge void*)delegate) {
+            return i;
+        }
+    }
+    return NSNotFound;
+}
+- (BOOL)respondsToSelector:(SEL)selector {
+    if ([super respondsToSelector:selector])
+        return YES;
+    for (id delegate in _delegates) {
+        if (delegate && [delegate respondsToSelector:selector])
+            return YES;
+    }
+    return NO;
+}
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)selector {
+    NSMethodSignature* signature = [super methodSignatureForSelector:selector];
+    if (signature)
+        return signature;
+    
+    [_delegates compact];
+    if (_delegates.count == 0) {
+        return [self methodSignatureForSelector:@selector(description)];
+    }
+    for (id delegate in _delegates) {//存储了各个对象的代理
+        if (!delegate)
+            continue;
+        signature = [delegate methodSignatureForSelector:selector];
+        if (signature)
+            break;
+    }
+    return signature;
+}
+- (void)forwardInvocation:(NSInvocation *)invocation {
+    SEL selector = [invocation selector];
+    BOOL responded = NO;
+    for (id delegate in _delegates) {
+        if (delegate && [delegate respondsToSelector:selector]) {
+            [invocation invokeWithTarget:delegate];
+            responded = YES;
+        }
+    }
+    if (!responded)
+        [self doesNotRecognizeSelector:selector];
 }
 
 @end
