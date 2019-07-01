@@ -47,7 +47,7 @@
 
 - (void)dealloc
 {
-//    NSLog(@"TestViewController2销毁");
+    NSLog(@"TestViewController2销毁");
 }
 
 

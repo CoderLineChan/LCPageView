@@ -10,7 +10,6 @@
 
 @protocol LCPageContentViewProtocol <NSObject>
 
-#pragma mark - titleView 代理方法
 /// 即将开始拖拽
 - (void)lc_scrollViewWillBeginDragging:(UICollectionView *)collectionView;
 

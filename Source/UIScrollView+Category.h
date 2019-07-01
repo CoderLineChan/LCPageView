@@ -10,6 +10,6 @@
 typedef void(^LCScrollHandle)(UIScrollView *);
 
 @interface UIScrollView (Category)
-/** 滚动回调 */
+/** 滚动代理 */
 @property(nonatomic, copy) LCScrollHandle scrollHandle;
 @end
