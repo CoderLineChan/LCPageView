@@ -2,8 +2,8 @@
 //  LCTitleView.h
 //  LCPageView
 //
-//  Created by 复新会智 on 2018/5/15.
-//  Copyright © 2018年 复新会智. All rights reserved.
+//  Created by lianchen on 2018/5/15.
+//  Copyright © 2018年 lianchen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,17 +12,22 @@
 
 #pragma mark - 标题视图
 
-@interface LCTitleView : UIView 
+@interface LCTitleView : UIView
 /** 样式 */
-@property(nonatomic, strong)LCPageViewStyle *style;
+@property(nonatomic, strong)id <LCPageViewStyleProtocol>style;
 /** 标题内容数组 */
-@property(nonatomic, strong)NSArray <NSString *>*titles;
+@property(nonatomic, strong, readonly)NSArray <NSString *>*titles;
+
+#pragma mark - 接口
 /// 创建titleView
 - (instancetype)initWithFrame:(CGRect)frame
                        titles:(NSArray <NSString *>*)titles
-                pageViewStyle:(LCPageViewStyle *)pageViewStyle;
+                pageViewStyle:(id <LCPageViewStyleProtocol>)pageViewStyle;
 
-
+/**
+ 更新标题内容
+ */
+- (void)updateTitles:(NSArray <NSString *>*)titles;
 
 /**
  初始化 默认UI, 不调用则不初始化任何UI
@@ -31,7 +36,7 @@
 #pragma mark - 子控制器调用方法
 /**
  滚动内容视图
-
+ 
  @param index index
  */
 - (void)scrollCollectionviewWithIndex:(NSInteger)index;
@@ -40,7 +45,7 @@
 
 /**
  正在滚动
-
+ 
  @param collectionView 内容滚动视图
  */
 - (void)collectionViewDidScroll:(UICollectionView *)collectionView;

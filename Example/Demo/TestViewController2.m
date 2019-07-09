@@ -70,7 +70,7 @@
     headView.frame = CGRectMake(0, 0, kScreenW, 150);
     
     LCPageViewStyle *style = [[LCPageViewStyle alloc] init];
-    
+    [style initNormalStyle];
     CGRect frame = CGRectMake(0, 64, kScreenW, kScreenH - 64);
     /// 自定义标题
     TestTitleView *titleView = [[TestTitleView alloc] initWithFrame:CGRectMake(0,0, kScreenW, 38) titles:titles pageViewStyle:style];

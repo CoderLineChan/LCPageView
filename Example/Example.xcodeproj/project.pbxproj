@@ -22,6 +22,7 @@
 		C857069720ADB22400397593 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C857068F20ADB22400397593 /* ViewController.m */; };
 		C857069920ADB22400397593 /* TestViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = C857069120ADB22400397593 /* TestViewController2.m */; };
 		C857069A20ADB22400397593 /* TestTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C857069220ADB22400397593 /* TestTitleView.m */; };
+		C878B4E422D482100027E862 /* UIView+LCFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C878B4E222D4820F0027E862 /* UIView+LCFrame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +40,6 @@
 		C857067B20ADB08900397593 /* LCPageViewStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCPageViewStyle.m; sourceTree = "<group>"; };
 		C857067C20ADB08900397593 /* LCTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCTitleView.h; sourceTree = "<group>"; };
 		C857067D20ADB08A00397593 /* MainScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScrollView.m; sourceTree = "<group>"; };
-		C857067E20ADB08A00397593 /* LCPageContentViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPageContentViewProtocol.h; sourceTree = "<group>"; };
 		C857067F20ADB08A00397593 /* LCPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPageView.h; sourceTree = "<group>"; };
 		C857068020ADB08A00397593 /* UIScrollView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Category.h"; sourceTree = "<group>"; };
 		C857068120ADB08A00397593 /* UIScrollView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Category.m"; sourceTree = "<group>"; };
@@ -54,6 +54,9 @@
 		C857069320ADB22400397593 /* TestTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTitleView.h; sourceTree = "<group>"; };
 		C857069420ADB22400397593 /* TestViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController2.h; sourceTree = "<group>"; };
 		C857069520ADB22400397593 /* TestViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController3.h; sourceTree = "<group>"; };
+		C878B4E122D481850027E862 /* LCPageViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCPageViewProtocol.h; sourceTree = "<group>"; };
+		C878B4E222D4820F0027E862 /* UIView+LCFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCFrame.m"; sourceTree = "<group>"; };
+		C878B4E322D4820F0027E862 /* UIView+LCFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LCFrame.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +105,6 @@
 		C857066420ADB04500397593 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C857067E20ADB08A00397593 /* LCPageContentViewProtocol.h */,
 				C857067F20ADB08A00397593 /* LCPageView.h */,
 				C857067920ADB08900397593 /* LCPageView.m */,
 				C857068320ADB08A00397593 /* LCPageViewStyle.h */,
@@ -111,6 +113,9 @@
 				C857067820ADB08900397593 /* LCTitleView.m */,
 				C857068420ADB08A00397593 /* MainScrollView.h */,
 				C857067D20ADB08A00397593 /* MainScrollView.m */,
+				C878B4E322D4820F0027E862 /* UIView+LCFrame.h */,
+				C878B4E222D4820F0027E862 /* UIView+LCFrame.m */,
+				C878B4E122D481850027E862 /* LCPageViewProtocol.h */,
 				C857068020ADB08A00397593 /* UIScrollView+Category.h */,
 				C857068120ADB08A00397593 /* UIScrollView+Category.m */,
 				C857068220ADB08A00397593 /* UIViewController+Category.h */,
@@ -216,6 +221,7 @@
 				C857068820ADB08A00397593 /* LCPageViewStyle.m in Sources */,
 				C857068620ADB08A00397593 /* LCPageView.m in Sources */,
 				C857068720ADB08A00397593 /* UIViewController+Category.m in Sources */,
+				C878B4E422D482100027E862 /* UIView+LCFrame.m in Sources */,
 				C857065020ADAF9E00397593 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
